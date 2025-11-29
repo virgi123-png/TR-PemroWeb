@@ -58,14 +58,6 @@
 						<a href="{{ url('/login') }}" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
-{{--
-						<form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit"
-                        class="flex-c-m trans-04 p-lr-25">
-                            Logout
-                        </button>
-                        </form> --}}
 
                         <a href="{{ route('logout') }}"
                         class="flex-c-m trans-04 p-lr-25"
