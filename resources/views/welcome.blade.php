@@ -86,7 +86,7 @@
 					<!-- Logo desktop -->
 					<img src="images/icons/logo-01.png" alt="IMG-LOGO">
 
-					<!-- Menu desktop -->
+					<!-- Menu desktop halo -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
