@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -53,8 +54,11 @@ Route::get('/shoping-cart', function () {
     return view('cart.shoping-cart');
 });
 
-Route::get('/account', function () {
-    return view('account.account');
-})->middleware('auth');
+// Profile routes
+Route::middleware('auth')->group(function () {
+    Route::get('/account', [ProfileController::class, 'show'])->name('profile.show');
+    Route::post('/account/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/account/change-password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
+});
 
 
