@@ -36,8 +36,9 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
-        // Hash password and create user
+        // Hash password and create user with role 'user'
         $data['password'] = bcrypt($data['password']);
+        $data['role'] = 'user';
         User::create($data);
 
         return redirect('/login')->with('success', 'Akun berhasil dibuat. Silakan login.');

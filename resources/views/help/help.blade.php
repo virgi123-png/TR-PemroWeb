@@ -920,8 +920,27 @@ video {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQs Template - Two Columns</title>
     <link href="../css/main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 </head>
-<body class="bg-white py-12">
+<body class="bg-white">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white border-b">
+       <div class="container-menu-desktop">
+            <div class="top-bar">
+                <div class="content-topbar flex-sb-m h-full container">
+                    <div class="left-top-bar">Free shipping for standard order over $100</div>
+                    <div class="right-top-bar flex-w h-full">
+                        <a href="{{ url('/account') }}" class="flex-c-m trans-04 p-lr-25">My Account</a>
+                        <a href="{{ url('/') }}" class="flex-c-m trans-04 p-lr-25">Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+<br>
+    <main>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 class="text-3xl font-extrabold text-gray-900 text-center">Frequently Asked Questions</h2>
           <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 items-start">

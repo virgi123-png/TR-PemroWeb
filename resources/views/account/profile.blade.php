@@ -23,19 +23,16 @@
                     </div>
                 </div>
             </div>
-
-            <div class="wrap-menu-desktop">
-                <nav class="limiter-menu-desktop container">
-                    <img src="{{ asset('images/icons/logo-01.png') }}" alt="IMG-LOGO">
-                </nav>
-            </div>
         </div>
     </header>
 
     <main>
         <div class="account-area p-t-50 p-b-50">
             <div class="container">
-                <br>
+
+          <nav class="limiter-menu-desktop container">
+                        <img src="{{ asset('images/icons/logo-01.png') }}" alt="IMG-LOGO">
+            </nav>       <br>
                 <br>
                 <div class="row">
                     <div class="col-md-3">

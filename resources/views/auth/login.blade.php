@@ -354,6 +354,8 @@ input {
 </style>
 <br>
 <br>
+<h1 align="center">USER</h1>
+<br>
     <div class="cont">
     <!-- Sign In Form -->
     <form class="form sign-in" method="POST" action="{{ route('login') }}">
@@ -382,7 +384,6 @@ input {
                 <div class="invalid-feedback d-block text-center">{{ $message }}</div>
             @enderror
         </label>
-        <p class="forgot-pass">Forgot password?</p>
         <button type="submit" class="submit">Sign In</button>
     </form>
 
