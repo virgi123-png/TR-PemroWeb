@@ -55,7 +55,7 @@
 						</a>
 
 						<a href="{{ url('/account') }}" class="flex-c-m trans-04 p-lr-25">
-							My Account
+							{{ Auth::user()->name }}
 						</a>
 
                         <a href="{{ route('logout') }}"

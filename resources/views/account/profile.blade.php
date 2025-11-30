@@ -49,8 +49,6 @@
                             <ul class="list-unstyled account-menu-list p-t-10">
                                 <li class="p-tb-8"><a href="{{ url('/account') }}" class="stext-106 cl2 hov-cl1"> <i class="fa fa-tachometer m-r-8"></i> Dashboard</a></li>
                                 <li class="p-tb-8"><a href="{{ url('/account') }}" class="stext-106 cl2 hov-cl1" style="font-weight: bold; color: #d4af7a;"> <i class="fa fa-user m-r-8"></i> Profile</a></li>
-                                <li class="p-tb-8"><a href="#" class="stext-106 cl2 hov-cl1"> <i class="fa fa-list m-r-8"></i> Orders</a></li>
-                                <li class="p-tb-8"><a href="#" class="stext-106 cl2 hov-cl1"> <i class="fa fa-cog m-r-8"></i> Settings</a></li>
                                 <li class="p-tb-8">
                                     <a href="{{ route('logout') }}" class="stext-106 cl2 hov-cl1" onclick="event.preventDefault(); document.getElementById('logout-form-account').submit();">
                                         <i class="fa fa-sign-out m-r-8"></i> Logout
