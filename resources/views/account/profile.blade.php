@@ -41,7 +41,7 @@
                     <div class="col-md-3">
                         <div class="bor10 p-lr-30 p-t-30 p-b-30 m-b-30">
                             <div class="text-center m-b-20">
-                                <img src="{{ asset('images/icons/logo-01.png') }}" alt="Avatar" class="img-fluid rounded-circle" style="width:110px;height:110px;object-fit:cover">
+                                <img src="{{ asset('images/avatar.JPG') }}" alt="Avatar" class="img-fluid rounded-circle" style="width:110px;height:110px;object-fit:cover">
                                 <h4 class="mtext-107 cl2 p-t-10">{{ Auth::user()->name }}</h4>
                                 <span class="stext-102 cl6">{{ Auth::user()->email }}</span>
                             </div>
