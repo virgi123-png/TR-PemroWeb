@@ -55,7 +55,7 @@
 							Help & FAQs
 						</a>
 
-						<a href="{{ url('/login') }}" class="flex-c-m trans-04 p-lr-25">
+						<a href="{{ url('/account') }}" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
 

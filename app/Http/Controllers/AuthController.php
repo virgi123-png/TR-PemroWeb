@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -24,7 +25,22 @@ class AuthController extends Controller
             return redirect()->intended('/');
         }
 
-        return back()->with('error', 'Email atau password salah.');
+        return back()->with('error', 'Email atau password Anda salah.');
+    }
+
+    public function register(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        // Hash password and create user
+        $data['password'] = bcrypt($data['password']);
+        User::create($data);
+
+        return redirect('/login')->with('success', 'Akun berhasil dibuat. Silakan login.');
     }
 
     public function logout(Request $request)

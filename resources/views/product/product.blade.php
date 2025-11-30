@@ -59,13 +59,15 @@
 							My Account
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
+						<a href="{{ route('logout') }}"
+                        class="flex-c-m trans-04 p-lr-25"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
-						</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
 					</div>
 				</div>
 			</div>
@@ -74,20 +76,13 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="#" class="logo">
 						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
-					</a>
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
 								<a href="{{ url('/') }}">Home</a>
-								<ul class="sub-menu">
-									<li><a href="index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
-								</ul>
 							</li>
 
 							<li class="active-menu">
@@ -588,7 +583,7 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a href="{{ url('/product-detail') }}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									Esprit Ruffle Shirt
 								</a>
 

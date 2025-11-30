@@ -12,6 +12,11 @@ Route::get('/login', [AuthController::class, 'index'])
 ->middleware('guest');
 
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/register', [AuthController::class, 'register'])
+->name('register')
+->middleware('guest');
+
 Route::post('/logout', [AuthController::class, 'logout'])
 ->name('logout')
 ->middleware('auth');
@@ -36,14 +41,6 @@ Route::get('/contact', function () {
     return view('contact.contact');
 });
 
-Route::get('/home-02', function () {
-    return view('home-02');
-});
-
-Route::get('/home-03', function () {
-    return view('home-03');
-});
-
 Route::get('/product-detail', function () {
     return view('product.product-detail');
 });
@@ -55,5 +52,9 @@ Route::get('/product', function () {
 Route::get('/shoping-cart', function () {
     return view('cart.shoping-cart');
 });
+
+Route::get('/account', function () {
+    return view('account.account');
+})->middleware('auth');
 
 

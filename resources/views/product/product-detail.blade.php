@@ -59,13 +59,15 @@
 							My Account
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
+						<a href="{{ route('logout') }}"
+                        class="flex-c-m trans-04 p-lr-25"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
-						</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
 					</div>
 				</div>
 			</div>
@@ -74,40 +76,33 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="#" class="logo">
 						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
-					</a>
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="index.html">Home</a>
-								<ul class="sub-menu">
-									<li><a href="index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
-								</ul>
+								<a href="{{ url('/') }}">Home</a>
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="{{ url('/product') }}">Shop</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Features</a>
+								<a href="{{ url('/shoping-cart') }}">Features</a>
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="{{ url('/blog') }}">Blog</a>
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="{{ url('/about') }}">About</a>
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<li><a href="{{ url('/contact') }}">Contact</a>
 							</li>
 						</ul>
 					</div>
