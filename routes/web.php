@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
@@ -54,7 +55,6 @@ Route::get('/shoping-cart', function () {
     return view('cart.shoping-cart');
 });
 
-// Profile routes
 Route::middleware('auth')->group(function () {
     Route::get('/account', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/account/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
