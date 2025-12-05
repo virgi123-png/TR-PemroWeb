@@ -55,6 +55,12 @@ Route::get('/shoping-cart', function () {
     return view('cart.shoping-cart');
 });
 
+// Dashboard - hanya untuk admin
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/datatables', [DashboardController::class, 'datatables'])->name('dashboard.datatables');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/account', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/account/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
