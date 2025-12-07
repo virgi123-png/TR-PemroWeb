@@ -28,8 +28,12 @@ class DashboardController extends Controller
 
     public function datatables()
     {
-        return view('dashboard.datatables');
+        // Ambil semua user dengan role 'user'
+        $users = User::where('role', 'user')->get();
+
+        return view('dashboard.datatables', compact('users'));
     }
+
 
     public function forms()
     {

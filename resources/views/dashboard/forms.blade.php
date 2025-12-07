@@ -150,14 +150,19 @@
               <li class="nav-item active submenu">
                 <a data-bs-toggle="collapse" href="#forms">
                   <i class="fas fa-pen-square"></i>
-                  <p>Forms</p>
+                  <p>Produk</p>
                   <span class="caret"></span>
                 </a>
                 <div class="collapse show" id="forms">
                   <ul class="nav nav-collapse">
                     <li class="active">
                       <a href="{{ route('dashboard.forms') }}">
-                        <span class="sub-item">Basic Form</span>
+                        <span class="sub-item">Tipe Jam</span>
+                      </a>
+                    </li>
+                    <li class="">
+                      <a href="{{ route('dashboard.products') }}">
+                        <span class="sub-item">Jam</span>
                       </a>
                     </li>
                   </ul>
@@ -166,14 +171,14 @@
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#tables">
                   <i class="fas fa-table"></i>
-                  <p>Tables</p>
+                  <p>Tabel</p>
                   <span class="caret"></span>
                 </a>
                 <div class="collapse" id="tables">
                   <ul class="nav nav-collapse">
                     <li>
                       <a href="{{ route('dashboard.datatables') }}">
-                        <span class="sub-item">Datatables</span>
+                        <span class="sub-item">Data Pengguna</span>
                       </a>
                     </li>
                   </ul>
@@ -219,18 +224,6 @@
               <nav
                 class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
               >
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <button type="submit" class="btn btn-search pe-1">
-                      <i class="fa fa-search search-icon"></i>
-                    </button>
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Search ..."
-                    class="form-control"
-                  />
-                </div>
               </nav>
 
               <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
@@ -560,15 +553,15 @@
         <div class="container">
         <div class="page-inner">
             <div class="page-header">
-            <h3 class="fw-bold mb-3">Forms</h3>
+            <h3 class="fw-bold mb-3">Tipe Jam</h3>
             <ul class="breadcrumbs mb-3">
                 <li class="nav-home">
                 <a href="#"><i class="icon-home"></i></a>
                 </li>
                 <li class="separator"><i class="icon-arrow-right"></i></li>
-                <li class="nav-item"><a href="#">Forms</a></li>
+                <li class="nav-item"><a href="#">Produk</a></li>
                 <li class="separator"><i class="icon-arrow-right"></i></li>
-                <li class="nav-item"><a href="#">Basic Form</a></li>
+                <li class="nav-item"><a href="#">Tipe Jam</a></li>
             </ul>
             </div>
 
@@ -616,7 +609,7 @@
                     <tr>
                     <th>Nama</th>
                     <th>Deskripsi</th>
-                    <th>User</th>
+                    <th>Admin</th>
                     <th>Aksi</th>
                     </tr>
                 </thead>

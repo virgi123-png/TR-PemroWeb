@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TipeJamController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -61,6 +62,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/datatables', [DashboardController::class, 'datatables'])->name('dashboard.datatables');
     Route::get('/dashboard/forms', [TipeJamController::class, 'index'])->name('dashboard.forms');
+    Route::get('/dashboard/products', [ProductController::class, 'index'])->name('dashboard.products');
+    Route::post('/dashboard/products', [ProductController::class, 'store'])->name('products.store');
+    Route::put('/dashboard/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/dashboard/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
 
 Route::middleware('auth')->group(function () {
@@ -71,12 +76,6 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('tipe-jams', TipeJamController::class)->middleware('auth');
-    Route::get('/tipe-jams', [TipeJamController::class, 'index'])->name('tipe-jams.index');
-    Route::get('/tipe-jams/create', [TipeJamController::class, 'create'])->name('tipe-jams.create');
-    Route::post('/tipe-jams', [TipeJamController::class, 'store'])->name('tipe-jams.store');
-    Route::get('/tipe-jams/{tipeJam}/edit', [TipeJamController::class, 'edit'])->name('tipe-jams.edit');
-    Route::put('/tipe-jams/{tipeJam}', [TipeJamController::class, 'update'])->name('tipe-jams.update');
-    Route::delete('/tipe-jams/{tipeJam}', [TipeJamController::class, 'destroy'])->name('tipe-jams.destroy');
 });
 
 
