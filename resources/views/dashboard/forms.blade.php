@@ -558,30 +558,88 @@
             @csrf
         </form>
         <div class="container">
-          <div class="page-inner">
+        <div class="page-inner">
             <div class="page-header">
-              <h3 class="fw-bold mb-3">Forms</h3>
-              <ul class="breadcrumbs mb-3">
+            <h3 class="fw-bold mb-3">Forms</h3>
+            <ul class="breadcrumbs mb-3">
                 <li class="nav-home">
-                  <a href="#">
-                    <i class="icon-home"></i>
-                  </a>
+                <a href="#"><i class="icon-home"></i></a>
                 </li>
-                <li class="separator">
-                  <i class="icon-arrow-right"></i>
-                </li>
-                <li class="nav-item">
-                  <a href="#">Forms</a>
-                </li>
-                <li class="separator">
-                  <i class="icon-arrow-right"></i>
-                </li>
-                <li class="nav-item">
-                  <a href="#">Basic Form</a>
-                </li>
-              </ul>
+                <li class="separator"><i class="icon-arrow-right"></i></li>
+                <li class="nav-item"><a href="#">Forms</a></li>
+                <li class="separator"><i class="icon-arrow-right"></i></li>
+                <li class="nav-item"><a href="#">Basic Form</a></li>
+            </ul>
             </div>
-          </div>
+
+            {{-- Tambahkan konten CRUD di sini --}}
+            @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
+            {{-- Form Tambah/Edit --}}
+            <div class="card mb-4">
+            <div class="card-header">{{ isset($tipeJam) ? 'Edit Tipe Jam' : 'Tambah Tipe Jam' }}</div>
+            <div class="card-body">
+                <form method="POST" action="{{ isset($tipeJam) ? route('tipe-jams.update', $tipeJam) : route('tipe-jams.store') }}">
+                @csrf
+                @if(isset($tipeJam)) @method('PUT') @endif
+
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama Tipe Jam</label>
+                    <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror"
+                        value="{{ old('nama', $tipeJam->nama ?? '') }}">
+                    @error('nama') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="note" class="form-label">Deskripsi</label>
+                    <input type="text" name="note" id="note" class="form-control @error('note') is-invalid @enderror"
+                        value="{{ old('note', $tipeJam->note ?? '') }}">
+                    @error('note') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <button type="submit" class="btn btn-success">Simpan</button>
+                @if(isset($tipeJam))
+                    <a href="{{ route('dashboard.forms') }}" class="btn btn-secondary">Batal</a>
+                @endif
+                </form>
+            </div>
+            </div>
+
+            {{-- Tabel List --}}
+            <div class="card">
+            <div class="card-header">Daftar Tipe Jam</div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    <th>Nama</th>
+                    <th>Deskripsi</th>
+                    <th>User</th>
+                    <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($tipeJams as $jam)
+                    <tr>
+                    <td>{{ $jam->nama }}</td>
+                    <td>{{ $jam->note }}</td>
+                    <td>{{ $jam->user->name }}</td>
+                    <td>
+                        <a href="{{ route('dashboard.forms', ['edit' => $jam->id]) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('tipe-jams.destroy', $jam) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
+                        @csrf @method('DELETE')
+                        <button class="btn btn-sm btn-danger">Hapus</button>
+                        </form>
+                    </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
         </div>
 
         <footer class="footer">

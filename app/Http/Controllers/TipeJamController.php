@@ -8,10 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class TipeJamController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $tipeJams = TipeJam::with('user')->get();
-        return view('tipe-jams.index', compact('tipeJams'));
+        $tipeJam = null;
+
+        if ($request->has('edit')) {
+            $tipeJam = TipeJam::find($request->edit);
+        }
+
+        return view('dashboard.forms', compact('tipeJams', 'tipeJam'));
     }
 
     public function create()

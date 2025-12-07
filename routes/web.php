@@ -60,7 +60,7 @@ Route::get('/shoping-cart', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/datatables', [DashboardController::class, 'datatables'])->name('dashboard.datatables');
-    Route::get('/dashboard/forms', [\App\Http\Controllers\TipeJamController::class, 'create'])->name('dashboard.forms');
+    Route::get('/dashboard/forms', [TipeJamController::class, 'index'])->name('dashboard.forms');
 });
 
 Route::middleware('auth')->group(function () {
@@ -70,6 +70,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::resource('tipe-jams', TipeJamController::class)->middleware('auth');
     Route::get('/tipe-jams', [TipeJamController::class, 'index'])->name('tipe-jams.index');
     Route::get('/tipe-jams/create', [TipeJamController::class, 'create'])->name('tipe-jams.create');
     Route::post('/tipe-jams', [TipeJamController::class, 'store'])->name('tipe-jams.store');
