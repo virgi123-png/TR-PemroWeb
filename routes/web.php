@@ -59,6 +59,7 @@ Route::get('/shoping-cart', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/datatables', [DashboardController::class, 'datatables'])->name('dashboard.datatables');
+    Route::get('/dashboard/forms', [DashboardController::class, 'forms'])->name('dashboard.forms');
 });
 
 Route::middleware('auth')->group(function () {
@@ -66,5 +67,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/account/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
     Route::post('/account/change-password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
 });
+
+use App\Http\Controllers\TipeJamController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('/tipe-jams', [TipeJamController::class, 'index'])->name('tipe-jam.index');
+    Route::get('/tipe-jams/create', [TipeJamController::class, 'create'])->name('tipe-jam.create');
+    Route::post('/tipe-jams', [TipeJamController::class, 'store'])->name('tipe-jam.store');
+    Route::get('/tipe-jams/{tipeJam}/edit', [TipeJamController::class, 'edit'])->name('tipe-jam.edit');
+    Route::put('/tipe-jams/{tipeJam}', [TipeJamController::class, 'update'])->name('tipe-jam.update');
+    Route::delete('/tipe-jams/{tipeJam}', [TipeJamController::class, 'destroy'])->name('tipe-jam.destroy');
+});
+
 
 

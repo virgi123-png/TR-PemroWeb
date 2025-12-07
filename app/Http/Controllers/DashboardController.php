@@ -30,4 +30,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.datatables');
     }
+
+    public function forms()
+    {
+        $tipeJams = \App\Models\TipeJam::with('user')->get();
+        return view('dashboard.forms', compact('tipeJams'));
+    }
 }
