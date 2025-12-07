@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TipeJamController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -67,8 +68,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/account/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
     Route::post('/account/change-password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
 });
-
-use App\Http\Controllers\TipeJamController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/tipe-jams', [TipeJamController::class, 'index'])->name('tipe-jam.index');

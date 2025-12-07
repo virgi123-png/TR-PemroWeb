@@ -583,43 +583,123 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <!-- CRUD Tipe Jam dari tipe-jams folder -->
+                <!-- CRUD Tipe Jam -->
                 <div class="card">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card-title">Tipe Jam</div>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tambahTipeJamModal">
+                      + Tambah Tipe Jam
+                    </button>
+                  </div>
                   <div class="card-body">
-                    <h2 class="mb-4">Tipe Jam</h2>
-                    <a href="{{ route('tipe-jam.create') }}" class="btn btn-primary mb-3">+ Tambah Tipe Jam</a>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-hover">
                       <thead>
                         <tr>
                           <th>Nama</th>
                           <th>Deskripsi</th>
-                          <th>User</th>
+                          <th>Admin</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($tipeJams as $tipeJam)
+                        @forelse($tipeJams as $tipeJam)
                         <tr>
                           <td>{{ $tipeJam->nama }}</td>
                           <td>{{ $tipeJam->note }}</td>
+                          <td>{{ $tipeJam->user->name }}</td>
                           <td>
-                            {{ $tipeJam->user->name }}
-                          </td>
-                          <td>
-                            <a href="{{ route('tipe-jam.edit', $tipeJam) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('tipe-jam.destroy', $tipeJam) }}" method="POST" class="d-inline"
-                              onsubmit="return confirm('Yakin ingin hapus?')">
+                            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editTipeJamModal{{ $tipeJam->id }}">
+                              Edit
+                            </button>
+                            <form action="{{ route('tipe-jam.destroy', $tipeJam) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
                               @csrf
                               @method('DELETE')
-                              <button class="btn btn-sm btn-danger">Hapus</button>
+                              <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                             </form>
                           </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                          <td colspan="4" class="text-center">Tidak ada data</td>
+                        </tr>
+                        @endforelse
                       </tbody>
                     </table>
                   </div>
                 </div>
+
+                <!-- Modal Tambah Tipe Jam -->
+                <div class="modal fade" id="tambahTipeJamModal" tabindex="-1" aria-labelledby="tambahTipeJamModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="tambahTipeJamModalLabel">Tambah Tipe Jam</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <form method="POST" action="{{ route('tipe-jam.store') }}">
+                        @csrf
+                        <div class="modal-body">
+                          <div class="mb-3">
+                            <label for="nama" class="form-label">Nama Tipe Jam</label>
+                            <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" required>
+                            @error('nama')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                          </div>
+                          <div class="mb-3">
+                            <label for="note" class="form-label">Deskripsi Tipe Jam</label>
+                            <input type="text" name="note" id="note" class="form-control @error('note') is-invalid @enderror" value="{{ old('note') }}" required>
+                            @error('note')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                          <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal Edit Tipe Jam -->
+                @foreach($tipeJams as $tipeJam)
+                <div class="modal fade" id="editTipeJamModal{{ $tipeJam->id }}" tabindex="-1" aria-labelledby="editTipeJamModalLabel{{ $tipeJam->id }}" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="editTipeJamModalLabel{{ $tipeJam->id }}">Edit Tipe Jam</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <form method="POST" action="{{ route('tipe-jam.update', $tipeJam) }}">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                          <div class="mb-3">
+                            <label for="nama{{ $tipeJam->id }}" class="form-label">Nama Tipe Jam</label>
+                            <input type="text" name="nama" id="nama{{ $tipeJam->id }}" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama', $tipeJam->nama) }}" required>
+                            @error('nama')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                          </div>
+                          <div class="mb-3">
+                            <label for="note{{ $tipeJam->id }}" class="form-label">Deskripsi Tipe Jam</label>
+                            <input type="text" name="note" id="note{{ $tipeJam->id }}" class="form-control @error('note') is-invalid @enderror" value="{{ old('note', $tipeJam->note) }}" required>
+                            @error('note')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                          <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                @endforeach
               </div>
             </div>
 
