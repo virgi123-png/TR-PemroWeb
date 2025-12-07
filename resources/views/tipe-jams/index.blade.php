@@ -11,7 +11,13 @@
 <body>
     <div class="container">
         <h2 class="mb-4">Tipe Jam</h2>
-        <a href="{{ route('tipe-jam.create') }}" class="btn btn-primary mb-3">+ Tambah Tipe Jam</a>
+        <a href="{{ route('tipe-jams.create') }}" class="btn btn-primary mb-3">+ Tambah Tipe Jam</a>
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -30,8 +36,8 @@
                         {{ $tipeJam->user->name }}
                     </td>
                     <td>
-                        <a href="{{ route('tipe-jam.edit', $tipeJam) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <form action="{{ route('tipe-jam.destroy', $tipeJam) }}" method="POST" class="d-inline"
+                        <a href="{{ route('tipe-jams.edit', $tipeJam) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('tipe-jams.destroy', $tipeJam) }}" method="POST" class="d-inline"
                             onsubmit="return confirm('Yakin ingin hapus?')">
                             @csrf
                             @method('DELETE')

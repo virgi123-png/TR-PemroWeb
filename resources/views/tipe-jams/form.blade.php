@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h2 class="mb-4">{{ isset($tipeJam) ? 'Edit Tipe Jam' : 'Tambah Tipe Jam' }}</h2>
-        <form method="POST" action="{{ isset($tipeJam) ? route('tipe-jam.update', $tipeJam) : route('tipe-jam.store') }}">
+        <form method="POST" action="{{ isset($tipeJam) ? route('tipe-jams.update', $tipeJam) : route('tipe-jams.store') }}">
             @csrf
             @if(isset($tipeJam))
             @method('PUT')
@@ -37,7 +37,7 @@
             </div>
 
             <button type="submit" class="btn btn-success">Simpan</button>
-            <a href="{{ route('tipe-jam.index') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ route('tipe-jams.index') }}" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
 </body>

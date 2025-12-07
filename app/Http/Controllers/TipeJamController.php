@@ -29,7 +29,7 @@ class TipeJamController extends Controller
         $validated['user_id'] = Auth::id();
         TipeJam::create($validated);
 
-        return redirect()->route('tipe-jam.index')->with('success', 'Tipe Jam berhasil ditambahkan.');
+        return redirect()->route('tipe-jams.index')->with('success', 'Tipe Jam berhasil ditambahkan.');
     }
 
     public function show(string $id)
@@ -52,12 +52,12 @@ class TipeJamController extends Controller
         $validated['user_id'] = Auth::id();
 
         $tipeJam->update($validated);
-        return redirect()->route('tipe-jam.index')->with('success', 'Tipe Jam berhasil diupdate.');
-    }
+            return redirect()->route('tipe-jams.index')->with('success', 'Tipe Jam berhasil diupdate.');
+        }
 
     public function destroy(TipeJam $tipeJam)
     {
         $tipeJam->delete();
-        return redirect()->route('tipe-jam.index')->with('success', 'Tipe Jam berhasil dihapus.');
+        return redirect()->route('tipe-jams.index')->with('success', 'Tipe Jam berhasil dihapus.');
     }
 }
