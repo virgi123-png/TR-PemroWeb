@@ -279,6 +279,7 @@
                     <th>Nama</th>
                     <th>Harga</th>
                     <th>Stock</th>
+                    <th>Deskripsi</th>
                     <th>Kategori</th>
                     <th>Aksi</th>
                     </tr>
@@ -296,6 +297,7 @@
                     <td>{{ $prod->nama_produk }}</td>
                     <td>Rp {{ number_format($prod->harga_produk, 0, ',', '.') }}</td>
                     <td>{{ $prod->stock_produk }}</td>
+                    <td>{{ Str::limit($prod->deskripsi_singkat_produk, 50, '...') }}</td>
                     <td>{{ $prod->tipeJam->nama ?? '-' }}</td>
                     <td>
                         <a href="{{ route('dashboard.products', ['edit_product' => $prod->id]) }}" class="btn btn-sm btn-warning">Edit</a>

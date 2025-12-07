@@ -6,10 +6,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TipeJamController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
+Route::get('/', [ShopController::class, 'home'])->middleware('auth');
 
 Route::get('/login', [AuthController::class, 'index'])
 ->name('login')
@@ -45,13 +44,12 @@ Route::get('/contact', function () {
     return view('contact.contact');
 });
 
-Route::get('/product-detail', function () {
-    return view('product.product-detail');
-});
+Route::get('/product', [ShopController::class, 'index']);
+Route::get('/product-detail/{id}', [ShopController::class, 'show'])->name('product.detail');
 
-Route::get('/product', function () {
-    return view('product.product');
-});
+Route::get('/product-detail/{id}', [ShopController::class, 'show'])->name('product.detail');
+
+Route::get('/product', [ShopController::class, 'index']);
 
 Route::get('/shoping-cart', function () {
     return view('cart.shoping-cart');
@@ -77,6 +75,3 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('tipe-jams', TipeJamController::class)->middleware('auth');
 });
-
-
-

@@ -49,8 +49,8 @@
 							Help & FAQs
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
+						<a href="{{ url('/account') }}" class="flex-c-m trans-04 p-lr-25">
+							{{ Auth::user()->name }}
 						</a>
 
 						<a href="{{ route('logout') }}"
@@ -83,8 +83,8 @@
 								<a href="product.html">Shop</a>
 							</li>
 
-							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Features</a>
+							<li>
+								<a href="shoping-cart.html">Cart</a>
 							</li>
 
 							<li class="active-menu">
