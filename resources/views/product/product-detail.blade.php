@@ -61,7 +61,7 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<img src="{{ asset('images/icons/logo-01.png') }}" alt="IMG-LOGO">
+						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
@@ -75,7 +75,7 @@
 							</li>
 
 							<li>
-								<a href="{{ url('/shoping-cart') }}">Cart</a>
+								<a href="{{ url('/shoping-cart') }}">Features</a>
 							</li>
 
 							<li>
@@ -297,21 +297,24 @@
 
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
-									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
-										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-minus"></i>
+									<form action="{{ route('cart.add', $product->id) }}" method="POST" class="flex-w flex-m respon6-next">
+										@csrf
+										<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-minus"></i>
+											</div>
+
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="quantity" value="1" min="1" max="{{ $product->stock_produk }}">
+
+											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-plus"></i>
+											</div>
 										</div>
 
-										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1" min="1" max="{{ $product->stock_produk }}">
-
-										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-plus"></i>
-										</div>
-									</div>
-
-									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" {{ $product->stock_produk <= 0 ? 'disabled' : '' }}>
-										Add to cart
-									</button>
+										<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" {{ $product->stock_produk <= 0 ? 'disabled' : '' }}>
+											Add to cart
+										</button>
+									</form>
 								</div>
 							</div>
 						</div>

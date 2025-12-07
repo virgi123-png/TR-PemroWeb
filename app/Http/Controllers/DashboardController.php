@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\TipeJam;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -21,23 +23,84 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // Hitung jumlah user dengan role 'user' untuk ditampilkan sebagai visitors
         $visitorCount = User::where('role', 'user')->count();
         return view('dashboard.index', compact('visitorCount'));
     }
 
+    public function forms(Request $request)
+    {
+        $tipeJams = TipeJam::all();
+        $tipeJam = null;
+
+        if ($request->has('edit') && $request->edit) {
+            $tipeJam = TipeJam::find($request->edit);
+        }
+
+        return view('dashboard.forms', compact('tipeJams', 'tipeJam'));
+    }
+
+    public function products(Request $request)
+    {
+        $products = Product::all();
+        $tipeJams = TipeJam::all();
+        $product = null;
+
+        if ($request->has('edit_product') && $request->edit_product) {
+            $product = Product::find($request->edit_product);
+        }
+
+        return view('dashboard.products', compact('products', 'tipeJams', 'product'));
+    }
+
     public function datatables()
     {
-        // Ambil semua user dengan role 'user'
         $users = User::where('role', 'user')->get();
-
         return view('dashboard.datatables', compact('users'));
     }
 
-
-    public function forms()
+    public function orders()
     {
-        $tipeJams = \App\Models\TipeJam::with('user')->get();
-        return view('dashboard.forms', compact('tipeJams'));
+        $orders = Order::with('user', 'items')->orderBy('created_at', 'desc')->get();
+        return view('dashboard.orders', compact('orders'));
+    }
+
+    public function orderDetail($orderId)
+    {
+        $order = Order::with('user', 'items')->findOrFail($orderId);
+        return view('dashboard.order-detail', compact('order'));
+    }
+
+    public function verifyPayment(Request $request, $orderId)
+    {
+        $request->validate([
+            'payment_status' => 'required|in:pending,completed,failed',
+            'notes' => 'nullable|string',
+        ]);
+
+        $order = Order::findOrFail($orderId);
+        $order->payment_status = $request->payment_status;
+
+        if ($request->payment_status === 'completed') {
+            $order->status = 'processing';
+        } elseif ($request->payment_status === 'failed') {
+            $order->status = 'cancelled';
+        }
+
+        $order->save();
+
+        return redirect()->route('dashboard.order-detail', $order->id)->with('success', 'Status pembayaran berhasil diperbarui!');
+    }
+
+    public function updateOrderStatus(Request $request, $orderId)
+    {
+        $request->validate([
+            'status' => 'required|in:processing,shipped,delivered,cancelled',
+        ]);
+
+        $order = Order::findOrFail($orderId);
+        $order->status = $request->status;
+        $order->save();
+
+        return redirect()->route('dashboard.order-detail', $order->id)->with('success', 'Status pesanan berhasil diperbarui!');
     }
 }

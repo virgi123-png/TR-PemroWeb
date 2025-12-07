@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TipeJamController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', [ShopController::class, 'home'])->middleware('auth');
 
@@ -44,23 +45,32 @@ Route::get('/contact', function () {
     return view('contact.contact');
 });
 
-Route::get('/product', [ShopController::class, 'index']);
-Route::get('/product-detail/{id}', [ShopController::class, 'show'])->name('product.detail');
+Route::redirect('/product-detail', '/product');
 
 Route::get('/product-detail/{id}', [ShopController::class, 'show'])->name('product.detail');
 
 Route::get('/product', [ShopController::class, 'index']);
 
-Route::get('/shoping-cart', function () {
-    return view('cart.shoping-cart');
+Route::middleware('auth')->group(function () {
+    Route::get('/shoping-cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+    Route::put('/cart/update/{cart}', [CartController::class, 'update'])->name('cart.update');
+    Route::delete('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+    Route::get('/checkout', [CartController::class, 'showCheckout'])->name('cart.showCheckout');
+    Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+    Route::get('/order/{order}', [CartController::class, 'showOrder'])->name('order.show');
 });
 
 // Dashboard - hanya untuk admin
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/datatables', [DashboardController::class, 'datatables'])->name('dashboard.datatables');
-    Route::get('/dashboard/forms', [TipeJamController::class, 'index'])->name('dashboard.forms');
-    Route::get('/dashboard/products', [ProductController::class, 'index'])->name('dashboard.products');
+    Route::get('/dashboard/forms', [DashboardController::class, 'forms'])->name('dashboard.forms');
+    Route::get('/dashboard/products', [DashboardController::class, 'products'])->name('dashboard.products');
+    Route::get('/dashboard/orders', [DashboardController::class, 'orders'])->name('dashboard.orders');
+    Route::get('/dashboard/orders/{orderId}', [DashboardController::class, 'orderDetail'])->name('dashboard.order-detail');
+    Route::post('/dashboard/orders/{orderId}/verify-payment', [DashboardController::class, 'verifyPayment'])->name('dashboard.verify-payment');
+    Route::post('/dashboard/orders/{orderId}/update-status', [DashboardController::class, 'updateOrderStatus'])->name('dashboard.update-order-status');
     Route::post('/dashboard/products', [ProductController::class, 'store'])->name('products.store');
     Route::put('/dashboard/products/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/dashboard/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');

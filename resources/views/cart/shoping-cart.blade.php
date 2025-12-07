@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shoping Cart</title>
+	<title>Shopping Cart</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script src="{{ asset('js/script.js') }}"></script>
-<!--===============================================================================================-->
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+	<script src="{{ asset('js/script.js') }}"></script>
+	<style>
+		.btn-num-product-up.disabled,
+		.btn-num-product-down.disabled {
+			pointer-events: none;
+		}
+	</style>
 </head>
 <body class="animsition">
 
@@ -83,8 +77,8 @@
 								<a href="{{ url('/product') }}">Shop</a>
 							</li>
 
-							<li>
-								<a href="{{ url('/shoping-cart') }}">Cart</a>
+							<li class="label1" data-label1="hot">
+								<a href="{{ url('/shoping-cart') }}">Features</a>
 							</li>
 
 							<li>
@@ -232,110 +226,31 @@
 		</div>
 	</header>
 
-	<!-- Cart -->
-	<div class="wrap-header-cart js-panel-cart">
-		<div class="s-full js-hide-cart"></div>
-
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
-			<div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
-					Your Cart
-				</span>
-
-				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-					<i class="zmdi zmdi-close"></i>
-				</div>
-			</div>
-
-			<div class="header-cart-content flex-w js-pscroll">
-				<ul class="header-cart-wrapitem w-full">
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-01.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $19.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-03.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-						</div>
-					</li>
-				</ul>
-
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">
-						Total: $75.00
-					</div>
-
-					<div class="header-cart-buttons flex-w w-full">
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							View Cart
-						</a>
-
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-							Check Out
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+			<a href="{{ url('/') }}" class="stext-109 cl8 hov-cl1 trans-04">
 				Home
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
 			<span class="stext-109 cl4">
-				Shoping Cart
+				Shopping Cart
 			</span>
 		</div>
 	</div>
 
-
-	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85">
+	<!-- Shopping Cart -->
+	<div class="bg0 p-t-75 p-b-85">
 		<div class="container">
+			@if(session('success'))
+				<div class="alert alert-success alert-dismissible fade show mb-3">
+					{{ session('success') }}
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				</div>
+			@endif
+
+			@if($cartItems->count() > 0)
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
@@ -349,68 +264,50 @@
 									<th class="column-5">Total</th>
 								</tr>
 
+								@foreach($cartItems as $item)
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="images/item-cart-04.jpg" alt="IMG">
+											<img src="{{ asset('storage/' . $item->product->foto_produk) }}" alt="{{ $item->product->nama_produk }}">
 										</div>
 									</td>
-									<td class="column-2">Fresh Strawberries</td>
-									<td class="column-3">$ 36.00</td>
+									<td class="column-2">{{ $item->product->nama_produk }}</td>
+									<td class="column-3">Rp {{ number_format($item->product->harga_produk, 0, ',', '.') }}</td>
 									<td class="column-4">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+										<form action="{{ route('cart.update', $item->id) }}" method="POST" class="wrap-num-product flex-w m-l-auto m-r-0">
+											@csrf
+											@method('PUT')
+											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" onclick="decrementQty(this, event)">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
+											<input class="mtext-104 cl3 txt-center num-product quantity-input" type="number" name="quantity" value="{{ $item->quantity }}" min="1" max="{{ $item->product->stock_produk }}" data-price="{{ $item->product->harga_produk }}" onchange="updateButtonStates(this)">
 
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m {{ $item->quantity >= $item->product->stock_produk ? 'disabled' : '' }}" onclick="incrementQty(this, event)" id="btn-up-{{ $item->id }}">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
-										</div>
+										</form>
 									</td>
-									<td class="column-5">$ 36.00</td>
+									<td class="column-5">Rp {{ number_format($item->quantity * $item->product->harga_produk, 0, ',', '.') }}</td>
 								</tr>
-
-								<tr class="table_row">
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="images/item-cart-05.jpg" alt="IMG">
-										</div>
-									</td>
-									<td class="column-2">Lightweight Jacket</td>
-									<td class="column-3">$ 16.00</td>
-									<td class="column-4">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
-
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									<td class="column-5">$ 16.00</td>
-								</tr>
+								@endforeach
 							</table>
 						</div>
 
 						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
 							<div class="flex-w flex-m m-r-20 m-tb-5">
-								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
-
-								<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-									Apply coupon
-								</div>
+								<a href="{{ url('/product') }}" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+									Continue Shopping
+								</a>
 							</div>
 
-							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-								Update Cart
-							</div>
+							<form action="{{ route('cart.clear') }}" method="POST" style="display:inline;">
+								@csrf
+								@method('DELETE')
+								<button type="submit" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10" onclick="return confirm('Kosongkan keranjang?')">
+									Clear Cart
+								</button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -430,52 +327,22 @@
 
 							<div class="size-209">
 								<span class="mtext-110 cl2">
-									$79.65
+									Rp {{ number_format($subtotal, 0, ',', '.') }}
 								</span>
 							</div>
 						</div>
 
 						<div class="flex-w flex-t bor12 p-t-15 p-b-30">
-							<div class="size-208 w-full-ssm">
+							<div class="size-208">
 								<span class="stext-110 cl2">
 									Shipping:
 								</span>
 							</div>
 
-							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-								<p class="stext-111 cl6 p-t-2">
-									There are no shipping methods available. Please double check your address, or contact us if you need any help.
-								</p>
-
-								<div class="p-t-15">
-									<span class="stext-112 cl8">
-										Calculate Shipping
-									</span>
-
-									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2" name="time">
-											<option>Select a country...</option>
-											<option>USA</option>
-											<option>UK</option>
-										</select>
-										<div class="dropDownSelect2"></div>
-									</div>
-
-									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="State /  country">
-									</div>
-
-									<div class="bor8 bg0 m-b-22">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Postcode / Zip">
-									</div>
-
-									<div class="flex-w">
-										<div class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
-											Update Totals
-										</div>
-									</div>
-
-								</div>
+							<div class="size-209">
+								<span class="stext-110 cl2">
+									Calculated at checkout
+								</span>
 							</div>
 						</div>
 
@@ -488,22 +355,28 @@
 
 							<div class="size-209 p-t-1">
 								<span class="mtext-110 cl2">
-									$79.65
+									Rp {{ number_format($subtotal, 0, ',', '.') }}
 								</span>
 							</div>
 						</div>
 
-						<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+						<a href="{{ route('cart.showCheckout') }}" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Proceed to Checkout
-						</button>
+						</a>
 					</div>
 				</div>
 			</div>
+			@else
+			<div class="text-center p-t-50 p-b-50">
+				<h4 class="mtext-107 cl2 p-b-20">Keranjang Anda Kosong</h4>
+				<p class="stext-102 cl6 p-b-30">Belum ada produk di keranjang belanja Anda</p>
+				<a href="{{ url('/product') }}" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" style="width: fit-content; margin: 0 auto;">
+					Mulai Belanja
+				</a>
+			</div>
+			@endif
 		</div>
-	</form>
-
-
-
+	</div>
 
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
@@ -658,44 +531,131 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</span>
 	</div>
 
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-	<script>
-		$(".js-select2").each(function(){
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	<script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
-			var ps = new PerfectScrollbar(this, {
-				wheelSpeed: 1,
-				scrollingThreshold: 1000,
-				wheelPropagation: false,
-			});
+	<!-- Hidden Checkout Form -->
+	<form id="checkout-form" method="POST" action="{{ route('cart.checkout') }}" style="display: none;">
+		@csrf
+		<input type="hidden" id="checkout-country" name="country">
+		<input type="hidden" id="checkout-state" name="state">
+		<input type="hidden" id="checkout-city" name="city">
+		<input type="hidden" id="checkout-postcode" name="postcode">
+		<input type="hidden" id="checkout-shipping-cost" name="shipping_cost">
+	</form>
 
-			$(window).on('resize', function(){
-				ps.update();
-			})
+	<!-- Success Modal -->
+	<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header border-0">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-center">
+					<div class="mb-3">
+						<i class="zmdi zmdi-check-circle" style="font-size: 60px; color: #28a745;"></i>
+					</div>
+					<h5 class="modal-title mb-3" id="successModalLabel">Checkout Berhasil!</h5>
+					<p class="stext-111 cl8 mb-3">Pesanan Anda telah diproses dengan sukses.</p>
+					<div class="alert alert-light text-start">
+						<p class="mb-2"><strong>Alamat Pengiriman:</strong></p>
+						<p id="success-address" class="mb-2 stext-110"></p>
+						<p class="mb-0"><strong>Biaya Pengiriman: Rp <span id="success-shipping"></span></strong></p>
+					</div>
+				</div>
+				<div class="modal-footer border-0">
+					<a href="{{ url('/product') }}" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" style="text-decoration: none;">
+						Lanjut Belanja
+					</a>
+					<a href="{{ url('/') }}" class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer" style="text-decoration: none;">
+						Ke Dashboard
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+	<script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+	<script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+	<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+	<script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+	<script src="{{ asset('js/main.js') }}"></script>
+
+	<script>
+		let submitting = false;
+
+		function updateButtonStates(input) {
+			const form = input.closest('form');
+			const currentValue = parseInt(input.value);
+			const maxValue = parseInt(input.max);
+			const btnUp = form.querySelector('.btn-num-product-up');
+			const btnDown = form.querySelector('.btn-num-product-down');
+
+			if (currentValue >= maxValue) {
+				btnUp.classList.add('disabled');
+				btnUp.style.opacity = '0.5';
+				btnUp.style.cursor = 'not-allowed';
+			} else {
+				btnUp.classList.remove('disabled');
+				btnUp.style.opacity = '1';
+				btnUp.style.cursor = 'pointer';
+			}
+
+			if (currentValue <= 1) {
+				btnDown.classList.add('disabled');
+				btnDown.style.opacity = '0.5';
+				btnDown.style.cursor = 'not-allowed';
+			} else {
+				btnDown.classList.remove('disabled');
+				btnDown.style.opacity = '1';
+				btnDown.style.cursor = 'pointer';
+			}
+		}
+
+		function decrementQty(btn, event) {
+			event.preventDefault();
+			if (btn.classList.contains('disabled')) return;
+
+			const form = btn.closest('form');
+			const input = form.querySelector('input[name="quantity"]');
+			const currentValue = parseInt(input.value);
+
+			if (currentValue > 1) {
+				input.value = currentValue - 1;
+				updateButtonStates(input);
+				submitForm(form);
+			} else if (currentValue === 1) {
+				input.value = 0;
+				submitForm(form);
+			}
+		}
+
+		function incrementQty(btn, event) {
+			event.preventDefault();
+			if (btn.classList.contains('disabled')) return;
+
+			const form = btn.closest('form');
+			const input = form.querySelector('input[name="quantity"]');
+			const currentValue = parseInt(input.value);
+			const maxValue = parseInt(input.max);
+
+			if (currentValue < maxValue) {
+				input.value = currentValue + 1;
+				updateButtonStates(input);
+				submitForm(form);
+			}
+		}
+
+		function submitForm(form) {
+			if (submitting) return;
+			submitting = true;
+			form.submit();
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+			document.querySelectorAll('.quantity-input').forEach(input => {
+				updateButtonStates(input);
+			});
 		});
 	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
 </body>
 </html>

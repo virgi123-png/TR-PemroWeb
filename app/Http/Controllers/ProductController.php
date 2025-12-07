@@ -29,7 +29,7 @@ class ProductController extends Controller
             'harga_produk' => 'required|numeric|min:0',
             'stock_produk' => 'required|integer|min:0',
             'deskripsi_singkat_produk' => 'nullable|string',
-            'tipe_jam_id' => 'nullable|exists:tipe_jams,id',
+            'tipe_jam_id' => 'required|exists:tipe_jams,id',
             'foto_produk' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -57,7 +57,7 @@ class ProductController extends Controller
             'harga_produk' => 'required|numeric|min:0',
             'stock_produk' => 'required|integer|min:0',
             'deskripsi_singkat_produk' => 'nullable|string',
-            'tipe_jam_id' => 'nullable|exists:tipe_jams,id',
+            'tipe_jam_id' => 'required|exists:tipe_jams,id',
             'foto_produk' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
