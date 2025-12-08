@@ -77,7 +77,7 @@
 								<a href="{{ url('/product') }}">Shop</a>
 							</li>
 
-							<li class="label1" data-label1="hot">
+							<li>
 								<a href="{{ url('/shoping-cart') }}">Features</a>
 							</li>
 
@@ -225,6 +225,41 @@
 			</div>
 		</div>
 	</header>
+
+	<!-- Cart Sidebar (tetap di halaman shoping-cart) -->
+	<div class="wrap-header-cart js-panel-cart">
+		<div class="s-full js-hide-cart"></div>
+
+		<div class="header-cart flex-col-l p-l-65 p-r-25">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">Your Cart</span>
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+
+			<div class="header-cart-content flex-w js-pscroll">
+				<ul class="header-cart-wrapitem w-full" id="cart-sidebar-items">
+					{{-- Items akan diisi oleh JS --}}
+				</ul>
+
+				<div class="w-full">
+					<div class="header-cart-total w-full p-tb-40">
+						Total: Rp <span id="cart-sidebar-total">0</span>
+					</div>
+
+					<div class="header-cart-buttons flex-w w-full">
+						<a href="{{ route('cart.index') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							View Cart
+						</a>
+						<a href="{{ route('cart.showCheckout') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Check Out
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- breadcrumb -->
 	<div class="container">
@@ -645,13 +680,79 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			}
 		}
 
+		function updateCartCount() {
+			fetch('{{ route("cart.count") }}')
+				.then(res => res.json())
+				.then(data => {
+					const count = data.count || 0;
+					document.querySelectorAll('.js-show-cart').forEach(el => {
+						el.setAttribute('data-notify', count);
+					});
+				})
+				.catch(err => console.error('Error updating cart count:', err));
+		}
+
+		function updateCartSidebar() {
+			// Load cart items untuk sidebar dengan gambar
+			const items = document.querySelectorAll('.table_row');
+			const sidebarItems = document.getElementById('cart-sidebar-items');
+			sidebarItems.innerHTML = '';
+
+			let total = 0;
+			items.forEach(row => {
+				const prodName = row.querySelector('.column-2').textContent;
+				const qty = row.querySelector('input[name="quantity"]').value;
+				const price = parseInt(row.querySelector('input[name="quantity"]').dataset.price);
+				const subtotal = qty * price;
+
+				// Ambil gambar produk dari column-1
+				const imgElement = row.querySelector('.column-1 img');
+				const imgSrc = imgElement?.src || '';
+
+				const html = `
+					<li class="header-cart-item flex-w flex-t m-b-12">
+						<div class="header-cart-item-img m-r-15">
+							<img src="${imgSrc}" alt="${prodName}" style="width: 80px; height: auto; object-fit: cover; border-radius: 4px;">
+						</div>
+						<div class="header-cart-item-txt p-t-8 flex-grow-1">
+							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">${prodName}</a>
+							<span class="header-cart-item-info">${qty} x Rp ${price.toLocaleString('id-ID')}</span>
+						</div>
+					</li>
+				`;
+				sidebarItems.innerHTML += html;
+				total += subtotal;
+			});
+
+			document.getElementById('cart-sidebar-total').textContent = total.toLocaleString('id-ID');
+		}
+
 		function submitForm(form) {
 			if (submitting) return;
 			submitting = true;
+			form.addEventListener('submit', function() {
+				setTimeout(() => {
+					updateCartCount();
+					updateCartSidebar();
+					submitting = false;
+				}, 300);
+			}, { once: true });
 			form.submit();
 		}
 
 		document.addEventListener('DOMContentLoaded', function() {
+			updateCartCount();
+			updateCartSidebar();
+
+			document.querySelectorAll('form').forEach(form => {
+				form.addEventListener('submit', () => {
+					setTimeout(() => {
+						updateCartCount();
+						updateCartSidebar();
+					}, 500);
+				});
+			});
+
 			document.querySelectorAll('.quantity-input').forEach(input => {
 				updateButtonStates(input);
 			});

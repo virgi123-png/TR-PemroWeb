@@ -61,7 +61,7 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
+						<img src="{{ asset('images/icons/logo-01.png') }}" alt="IMG-LOGO">
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
@@ -75,7 +75,7 @@
 							</li>
 
 							<li>
-								<a href="{{ url('/shoping-cart') }}">Features</a>
+								<a href="{{ url('/shoping-cart') }}">Cart</a>
 							</li>
 
 							<li>
@@ -589,5 +589,81 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}"></script>
 	<script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
+	<script>
+		function updateCartCount() {
+			fetch('{{ route("cart.count") }}')
+				.then(res => res.json())
+				.then(data => {
+					const count = data.count || 0;
+					document.querySelectorAll('.js-show-cart').forEach(el => {
+						el.setAttribute('data-notify', count);
+					});
+				})
+				.catch(err => console.error('Error updating cart count:', err));
+		}
+
+		function loadCartSidebar() {
+			fetch('{{ route("cart.index") }}')
+				.then(res => res.text())
+				.then(html => {
+					// Parse untuk ekstrak cart items dari view
+					const parser = new DOMParser();
+					const doc = parser.parseFromString(html, 'text/html');
+					const rows = doc.querySelectorAll('.table_row');
+					const sidebarItems = document.getElementById('cart-sidebar-items');
+					sidebarItems.innerHTML = '';
+
+					let total = 0;
+					rows.forEach(row => {
+						const prodName = row.querySelector('.column-2')?.textContent || '';
+						const qtyInput = row.querySelector('input[name="quantity"]');
+						const qty = qtyInput?.value || 0;
+						const price = parseInt(qtyInput?.dataset.price || 0);
+						const subtotal = qty * price;
+
+						// Ambil gambar produk dari column-1
+						const imgElement = row.querySelector('.column-1 img');
+						const imgSrc = imgElement?.src || '';
+
+						const html = `
+							<li class="header-cart-item flex-w flex-t m-b-12">
+								<div class="header-cart-item-img m-r-15">
+									<img src="${imgSrc}" alt="${prodName}" style="width: 80px; height: auto; object-fit: cover; border-radius: 4px;">
+								</div>
+								<div class="header-cart-item-txt p-t-8 flex-grow-1">
+									<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">${prodName}</a>
+									<span class="header-cart-item-info">${qty} x Rp ${price.toLocaleString('id-ID')}</span>
+								</div>
+							</li>
+						`;
+						sidebarItems.innerHTML += html;
+						total += subtotal;
+					});
+
+					document.getElementById('cart-sidebar-total').textContent = total.toLocaleString('id-ID');
+				})
+				.catch(err => console.error('Error loading cart sidebar:', err));
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+			updateCartCount();
+			loadCartSidebar();
+		});
+
+		document.addEventListener('submit', function(e) {
+			if (e.target.method === 'POST' && e.target.action.includes('/cart/add')) {
+				setTimeout(() => {
+					updateCartCount();
+					loadCartSidebar();
+				}, 300);
+			}
+		});
+
+		document.addEventListener('click', function(e) {
+			if (e.target.closest('.js-hide-cart')) {
+				setTimeout(loadCartSidebar, 300);
+			}
+		});
+	</script>
 </body>
 </html>

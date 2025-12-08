@@ -20,9 +20,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold" href="{{ url('/') }}">
-            <i class="fas fa-shopping-bag"></i> E-Commerce
+            <img src="images/icons/logo-01.png" alt="E-Commerce Logo">
         </a>
-        <span class="navbar-text text-muted">Checkout</span>
     </div>
 </nav>
 

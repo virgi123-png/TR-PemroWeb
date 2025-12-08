@@ -233,4 +233,11 @@ class CartController extends Controller
         $order = Order::with('items')->where('id', $orderId)->where('user_id', $user->id)->firstOrFail();
         return view('cart.order-success', compact('order'));
     }
+
+    public function getCartCount()
+    {
+        $user = Auth::user();
+        $count = Cart::where('user_id', $user->id)->sum('quantity');
+        return response()->json(['count' => $count ?? 0]);
+    }
 }

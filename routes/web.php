@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CartController::class, 'showCheckout'])->name('cart.showCheckout');
     Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
     Route::get('/order/{order}', [CartController::class, 'showOrder'])->name('order.show');
+    Route::get('/cart-count', [CartController::class, 'getCartCount'])->name('cart.count');
 });
 
 // Dashboard - hanya untuk admin
@@ -74,6 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/dashboard/products', [ProductController::class, 'store'])->name('products.store');
     Route::put('/dashboard/products/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/dashboard/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::post('/dashboard/orders/{orderId}/note', [DashboardController::class, 'orderNote'])->name('dashboard.order-note');
 });
 
 Route::middleware('auth')->group(function () {

@@ -248,67 +248,21 @@
 			</div>
 
 			<div class="header-cart-content flex-w js-pscroll">
-				<ul class="header-cart-wrapitem w-full">
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-01.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $19.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-03.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-						</div>
-					</li>
+				<ul class="header-cart-wrapitem w-full" id="cart-sidebar-items">
+					{{-- Items akan dimuat dari AJAX --}}
 				</ul>
 
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
-						Total: $75.00
+						Total: Rp <span id="cart-sidebar-total">0</span>
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="{{ route('cart.index') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							View Cart
 						</a>
 
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+						<a href="{{ route('cart.showCheckout') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Check Out
 						</a>
 					</div>
@@ -938,6 +892,81 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+	<script>
+		function updateCartCount() {
+			fetch('{{ route("cart.count") }}')
+				.then(res => res.json())
+				.then(data => {
+					const count = data.count || 0;
+					document.querySelectorAll('.js-show-cart').forEach(el => {
+						el.setAttribute('data-notify', count);
+					});
+				})
+				.catch(err => console.error('Error updating cart count:', err));
+		}
+
+		function loadCartSidebar() {
+			fetch('{{ route("cart.index") }}')
+				.then(res => res.text())
+				.then(html => {
+					const parser = new DOMParser();
+					const doc = parser.parseFromString(html, 'text/html');
+					const rows = doc.querySelectorAll('.table_row');
+					const sidebarItems = document.getElementById('cart-sidebar-items');
+					sidebarItems.innerHTML = '';
+
+					let total = 0;
+					rows.forEach(row => {
+						const prodName = row.querySelector('.column-2')?.textContent || '';
+						const qtyInput = row.querySelector('input[name="quantity"]');
+						const qty = qtyInput?.value || 0;
+						const price = parseInt(qtyInput?.dataset.price || 0);
+						const subtotal = qty * price;
+
+						const imgElement = row.querySelector('.column-1 img');
+						const imgSrc = imgElement?.src || '';
+
+						const html = `
+							<li class="header-cart-item flex-w flex-t m-b-12">
+								<div class="header-cart-item-img m-r-15">
+									<img src="${imgSrc}" alt="${prodName}" style="width: 80px; height: auto; object-fit: cover; border-radius: 4px;">
+								</div>
+								<div class="header-cart-item-txt p-t-8 flex-grow-1">
+									<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">${prodName}</a>
+									<span class="header-cart-item-info">${qty} x Rp ${price.toLocaleString('id-ID')}</span>
+								</div>
+							</li>
+						`;
+						sidebarItems.innerHTML += html;
+						total += subtotal;
+					});
+
+					document.getElementById('cart-sidebar-total').textContent = total.toLocaleString('id-ID');
+				})
+				.catch(err => console.error('Error loading cart sidebar:', err));
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+			updateCartCount();
+			loadCartSidebar();
+		});
+
+		document.addEventListener('submit', function(e) {
+			if (e.target.method === 'POST' && e.target.action.includes('/cart/add')) {
+				setTimeout(() => {
+					updateCartCount();
+					loadCartSidebar();
+				}, 300);
+			}
+		});
+
+		document.addEventListener('click', function(e) {
+			if (e.target.closest('.js-hide-cart')) {
+				setTimeout(loadCartSidebar, 300);
+			}
+		});
+	</script>
 
 </body>
 </html>
