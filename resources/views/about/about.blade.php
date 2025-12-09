@@ -275,7 +275,7 @@
 
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/about5.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
 			About
 		</h2>
@@ -293,15 +293,15 @@
 						</h3>
 
 						<p class="stext-113 cl6 p-b-26">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non auctor massa ultrices non. Morbi sed odio massa. Quisque at vehicula tellus, sed tincidunt augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas varius egestas diam, eu sodales metus scelerisque congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas gravida justo eu arcu egestas convallis. Nullam eu erat bibendum, tempus ipsum eget, dictum enim. Donec non neque ut enim dapibus tincidunt vitae nec augue. Suspendisse potenti. Proin ut est diam. Donec condimentum euismod tortor, eget facilisis diam faucibus et. Morbi a tempor elit.
+							Coza Store lahir dari sebuah tujuan sederhana: menghadirkan jam tangan berkualitas untuk semua orang. Kami percaya bahwa jam bukan hanya alat penunjuk waktu, tetapi juga bagian dari gaya hidup, karakter, dan kepercayaan diri.
+
+Berawal dari toko kecil dengan koleksi terbatas, Coza Store terus berkembang berkat kepercayaan pelanggan. Kini, kami menghadirkan beragam pilihan jam tangan untuk anak-anak, wanita, hingga pria—mulai dari yang kasual, elegan, hingga sporty. Setiap produk kami pilih dengan teliti agar nyaman dipakai, awet, dan sesuai dengan kebutuhan setiap pengguna.
 						</p>
 
 						<p class="stext-113 cl6 p-b-26">
-							Donec gravida lorem elit, quis condimentum ex semper sit amet. Fusce eget ligula magna. Aliquam aliquam imperdiet sodales. Ut fringilla turpis in vehicula vehicula. Pellentesque congue ac orci ut gravida. Aliquam erat volutpat. Donec iaculis lectus a arcu facilisis, eu sodales lectus sagittis. Etiam pellentesque, magna vel dictum rutrum, neque justo eleifend elit, vel tincidunt erat arcu ut sem. Sed rutrum, turpis ut commodo efficitur, quam velit convallis ipsum, et maximus enim ligula ac ligula.
-						</p>
+							Dalam perjalanan kami, Coza Store terus belajar dari setiap tren, kebutuhan pelanggan, dan perubahan gaya hidup. Kami selalu berusaha menghadirkan produk-produk yang up to date tanpa mengorbankan kualitas maupun nilai fungsionalnya. Bagi kami, setiap detail sangat berarti.
 
-						<p class="stext-113 cl6 p-b-26">
-							Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+Seiring berkembangnya zaman, Coza Store tidak hanya fokus pada produk, tetapi juga pengalaman. Kami ingin setiap pelanggan merasa yakin dan nyaman saat memilih jam tangan yang tepat. Karena pada akhirnya, waktu adalah sesuatu yang berharga—dan kami ingin menjadi bagian dari setiap momen penting Anda.
 						</p>
 					</div>
 				</div>
@@ -309,7 +309,7 @@
 				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
 					<div class="how-bor1 ">
 						<div class="hov-img0">
-							<img src="images/about-01.jpg" alt="IMG">
+							<img src="images/about1.jfif" alt="IMG">
 						</div>
 					</div>
 				</div>
@@ -323,16 +323,14 @@
 						</h3>
 
 						<p class="stext-113 cl6 p-b-26">
-							Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed consectetur erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam maximus mauris sit amet odio convallis, in pharetra magna gravida. Praesent sed nunc fermentum mi molestie tempor. Morbi vitae viverra odio. Pellentesque ac velit egestas, luctus arcu non, laoreet mauris. Sed in ipsum tempor, consequat odio in, porttitor ante. Ut mauris ligula, volutpat in sodales in, porta non odio. Pellentesque tempor urna vitae mi vestibulum, nec venenatis nulla lobortis. Proin at gravida ante. Mauris auctor purus at lacus maximus euismod. Pellentesque vulputate massa ut nisl hendrerit, eget elementum libero iaculis.
-						</p>
-
+							Misi kami adalah memberikan pengalaman berbelanja jam tangan yang mudah, terpercaya, dan memuaskan bagi setiap pelanggan. Coza Store berkomitmen untuk selalu menghadirkan koleksi jam tangan berkualitas dengan harga yang tetap terjangkau, tanpa mengurangi standar kenyamanan maupun ketahanan produk. Kami terus mengikuti perkembangan tren agar setiap desain yang kami tawarkan tidak hanya modern dan menarik, tetapi juga fungsional dan cocok untuk berbagai kebutuhan. Selain itu, kami percaya bahwa layanan yang baik adalah bagian penting dari perjalanan pelanggan, sehingga kami selalu berusaha memberikan pelayanan yang responsif, ramah, dan profesional. Kami ingin setiap jam yang Anda pilih di Coza Store bukan hanya menjadi aksesori, tetapi menjadi bagian dari gaya, aktivitas, dan cerita yang Anda jalani setiap hari.
 						<div class="bor16 p-l-29 p-b-9 m-t-22">
 							<p class="stext-114 cl6 p-r-40 p-b-11">
-								Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
+								"Elegance is not about being noticed, it's about being remembered."
 							</p>
 
 							<span class="stext-111 cl8">
-								- Steve Job’s
+								— Giorgio Armani
 							</span>
 						</div>
 					</div>
@@ -341,7 +339,7 @@
 				<div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
 					<div class="how-bor2">
 						<div class="hov-img0">
-							<img src="images/about-02.jpg" alt="IMG">
+							<img src="images/about3.jfif" alt="IMG">
 						</div>
 					</div>
 				</div>
@@ -351,7 +349,6 @@
 
 
 
-	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">
@@ -362,26 +359,20 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Wanita
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Pria
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Anak Anak
 							</a>
 						</li>
 					</ul>
@@ -394,25 +385,7 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ url('/help') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								FAQs
 							</a>
 						</li>

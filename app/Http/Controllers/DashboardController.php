@@ -24,7 +24,14 @@ class DashboardController extends Controller
     public function index()
     {
         $visitorCount = User::where('role', 'user')->count();
-        return view('dashboard.index', compact('visitorCount'));
+
+        // Calculate total sales dari order total field
+        $totalSales = Order::sum('total');
+
+        // Get total orders count
+        $totalOrders = Order::count();
+
+        return view('dashboard.index', compact('visitorCount', 'totalSales', 'totalOrders'));
     }
 
     public function forms(Request $request)

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
     <style>
-        .order-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 8px; margin-bottom: 25px; }
+        .order-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 8px; margin: 30px 0 25px 0; }
         .order-header h2 { margin: 0; font-weight: 700; }
         .order-header p { margin: 5px 0 0 0; opacity: 0.9; }
         .info-card { background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 25px; margin-bottom: 20px; }

@@ -420,7 +420,6 @@
 	</section>
 	@endif
 
-	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">
@@ -431,26 +430,20 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Wanita
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Pria
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Anak Anak
 							</a>
 						</li>
 					</ul>
@@ -463,25 +456,7 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ url('/help') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								FAQs
 							</a>
 						</li>
@@ -606,7 +581,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			fetch('{{ route("cart.index") }}')
 				.then(res => res.text())
 				.then(html => {
-					// Parse untuk ekstrak cart items dari view
 					const parser = new DOMParser();
 					const doc = parser.parseFromString(html, 'text/html');
 					const rows = doc.querySelectorAll('.table_row');
@@ -621,7 +595,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						const price = parseInt(qtyInput?.dataset.price || 0);
 						const subtotal = qty * price;
 
-						// Ambil gambar produk dari column-1
 						const imgElement = row.querySelector('.column-1 img');
 						const imgSrc = imgElement?.src || '';
 

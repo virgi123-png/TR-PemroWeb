@@ -273,7 +273,7 @@
 
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/about5.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
 			Contact
 		</h2>
@@ -366,7 +366,6 @@
 
 
 
-	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">
@@ -377,26 +376,20 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Wanita
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Pria
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Anak Anak
 							</a>
 						</li>
 					</ul>
@@ -409,25 +402,7 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ url('/help') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								FAQs
 							</a>
 						</li>

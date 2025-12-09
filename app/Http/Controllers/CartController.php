@@ -129,7 +129,6 @@ class CartController extends Controller
             return redirect()->route('cart.index')->with('error', 'Keranjang Anda kosong!');
         }
 
-        // Gunakan shipping_cost dari request (dihitung client)
         $shippingCost = (int) $validated['shipping_cost'];
         $handlingFee = $validated['payment_method'] === 'cash' ? 2500 : 0;
 
@@ -140,7 +139,6 @@ class CartController extends Controller
             });
             $total = $subtotal + $shippingCost + $handlingFee;
 
-            // Build payment_details string
             $paymentDetails = $this->buildPaymentDetails($validated);
 
             $order = Order::create([

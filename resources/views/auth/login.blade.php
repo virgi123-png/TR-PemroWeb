@@ -354,7 +354,6 @@ input {
 </style>
 <br>
 <br>
-<h1 align="center">USER</h1>
 <br>
     <div class="cont">
     <!-- Sign In Form -->

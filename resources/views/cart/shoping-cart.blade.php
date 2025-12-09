@@ -413,7 +413,6 @@
 		</div>
 	</div>
 
-	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">
@@ -424,26 +423,20 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Wanita
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Pria
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Anak Anak
 							</a>
 						</li>
 					</ul>
@@ -456,25 +449,7 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ url('/help') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								FAQs
 							</a>
 						</li>
@@ -693,7 +668,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		}
 
 		function updateCartSidebar() {
-			// Load cart items untuk sidebar dengan gambar
+
 			const items = document.querySelectorAll('.table_row');
 			const sidebarItems = document.getElementById('cart-sidebar-items');
 			sidebarItems.innerHTML = '';
@@ -705,7 +680,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				const price = parseInt(row.querySelector('input[name="quantity"]').dataset.price);
 				const subtotal = qty * price;
 
-				// Ambil gambar produk dari column-1
 				const imgElement = row.querySelector('.column-1 img');
 				const imgSrc = imgElement?.src || '';
 

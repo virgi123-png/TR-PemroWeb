@@ -36,6 +36,31 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/script.js') }}"></script>
 <!--===============================================================================================-->
+
+<style>
+		/* Konsistensi ukuran gambar produk */
+		.block2-pic {
+			width: 100%;
+			height: 300px;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #f9f9f9;
+		}
+
+		.block2-pic img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+
+		.hov-img0:hover img {
+			transform: scale(1.05);
+			transition: transform 0.3s ease;
+		}
+	</style>
 </head>
 <body class="animsition">
 	<!-- Header -->
@@ -108,11 +133,9 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
-
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart pointer" data-notify="2">
+						<i class="zmdi zmdi-shopping-cart"></i>
+					</div>						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a>
 					</div>
@@ -133,11 +156,9 @@
 					<i class="zmdi zmdi-search"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
-					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
-
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+			<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart pointer" data-notify="2">
+				<i class="zmdi zmdi-shopping-cart"></i>
+			</div>				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</a>
 			</div>
@@ -274,12 +295,12 @@
 	<section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image: url(images/slide-01.jpg);">
+				<div class="item-slick1" style="background-image: url(images/iklan1.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Women Collection 2018
+									Women Collection 2025
 								</span>
 							</div>
 
@@ -298,18 +319,18 @@
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(images/slide-02.jpg);">
+				<div class="item-slick1" style="background-image: url(images/iklan2.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Men New-Season
+									Men New Style
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Jackets & Coats
+									Cool Watches
 								</h2>
 							</div>
 
@@ -322,18 +343,18 @@
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(images/slide-03.jpg);">
+				<div class="item-slick1" style="background-image: url(images/iklan5.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Men Collection 2018
+									Men Collection 2025
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									New arrivals
+									New Brand
 								</h2>
 							</div>
 
@@ -357,16 +378,16 @@
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-01.jpg" alt="IMG-BANNER">
+						<img src="images/lorenzoWanita.webp" alt="IMG-BANNER">
 
 						<a href="{{ url('/product') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Women
+									Wanita
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Elegan Style
 								</span>
 							</div>
 
@@ -382,16 +403,16 @@
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-02.jpg" alt="IMG-BANNER">
+						<img src="images/lorenzoPria.webp" alt="IMG-BANNER">
 
 						<a href="{{ url('/product') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Men
+									Pria
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Profesional Style
 								</span>
 							</div>
 
@@ -407,16 +428,16 @@
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
-						<img src="images/banner-03.jpg" alt="IMG-BANNER">
+						<img src="images/anakMason.webp" alt="IMG-BANNER">
 
 						<a href="{{ url('/product') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Accessories
+									Anak-Anak
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									New Trend
+									Kids Trend
 								</span>
 							</div>
 
@@ -441,6 +462,8 @@
 					Product Overview
 				</h3>
 			</div>
+
+			<div id="search-count" class="search-count p-b-20"></div>
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
@@ -472,11 +495,11 @@
 				<!-- Search product -->
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
 					<div class="bor8 dis-flex p-l-15">
-						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" id="search-btn">
 							<i class="zmdi zmdi-search"></i>
 						</button>
 
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+						<input id="search-product" class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Cari nama atau harga (cth: Jam Tangan, 150000)">
 					</div>
 				</div>
 
@@ -490,37 +513,19 @@
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="#" class="filter-link stext-106 trans-04" data-sort="default">
 										Default
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Popularity
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Average rating
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Newness
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="#" class="filter-link stext-106 trans-04" data-sort="price-asc">
 										Price: Low to High
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="#" class="filter-link stext-106 trans-04" data-sort="price-desc">
 										Price: High to Low
 									</a>
 								</li>
@@ -529,142 +534,46 @@
 
 						<div class="filter-col2 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
-								Price
+								Price (Rp)
 							</div>
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+									<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="all">
 										All
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$0.00 - $50.00
+									<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="0-100000">
+										Rp 0 - Rp 100.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$50.00 - $100.00
+									<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="100000-300000">
+										Rp 100.000 - Rp 300.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$100.00 - $150.00
+									<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="300000-600000">
+										Rp 300.000 - Rp 600.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$150.00 - $200.00
+									<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="600000-1000000">
+										Rp 600.000 - Rp 1.000.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$200.00+
+									<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="1000000-">
+										Rp 1.000.000+
 									</a>
 								</li>
 							</ul>
-						</div>
-
-						<div class="filter-col3 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Color
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #222;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Black
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Blue
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Grey
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Green
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Red
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
-										<i class="zmdi zmdi-circle-o"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										White
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<div class="filter-col4 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Tags
-							</div>
-
-							<div class="flex-w p-t-4 m-r--5">
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Fashion
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Lifestyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Denim
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Streetstyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Crafts
-								</a>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -672,7 +581,9 @@
 
 			<div class="row isotope-grid">
 				@forelse($products as $product)
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item tipe-{{ $product->tipe_jam_id }}">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item tipe-{{ $product->tipe_jam_id }}"
+					 data-price="{{ (float) $product->harga_produk }}"
+					 data-name="{{ strtolower($product->nama_produk) }}">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
@@ -686,7 +597,7 @@
 								</a>
 
 								<span class="stext-105 cl3">
-									Rp{{ number_format($product->harga_produk, 2) }}
+									Rp{{ number_format($product->harga_produk, 0, ',', '.') }}
 								</span>
 							</div>
 
@@ -709,7 +620,6 @@
 	</section>
 
 
-	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">
@@ -1120,17 +1030,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 					let total = 0;
 					rows.forEach(row => {
-						const prodName = row.querySelector('.column-2')?.textContent || '';
+						const prodName = row.querySelector('.column-2')?.textContent.trim() || '';
 						const qtyInput = row.querySelector('input[name="quantity"]');
-						const qty = qtyInput?.value || 0;
-						const price = parseInt(qtyInput?.dataset.price || 0);
+						const qty = parseInt(qtyInput?.value) || 0;
+						const price = parseInt(qtyInput?.dataset.price) || 0;
 						const subtotal = qty * price;
 
 						// Ambil gambar produk dari column-1
 						const imgElement = row.querySelector('.column-1 img');
 						const imgSrc = imgElement?.src || '';
 
-						const html = `
+						const itemHtml = `
 							<li class="header-cart-item flex-w flex-t m-b-12">
 								<div class="header-cart-item-img m-r-15">
 									<img src="${imgSrc}" alt="${prodName}" style="width: 80px; height: auto; object-fit: cover; border-radius: 4px;">
@@ -1141,7 +1051,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>
 							</li>
 						`;
-						sidebarItems.innerHTML += html;
+						sidebarItems.innerHTML += itemHtml;
 						total += subtotal;
 					});
 
@@ -1171,5 +1081,124 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		});
 	</script>
 
+	<script>
+(function(){
+  const grid = document.querySelector('.isotope-grid');
+  if (!grid) return;
+
+  const items = Array.from(grid.querySelectorAll('.isotope-item'));
+  const originalOrder = items.slice();
+
+  let selectedCategory = '*';
+  let selectedPriceRange = 'all';
+  let selectedSort = 'default';
+  let searchTerm = '';
+
+  function parseRange(range) {
+    if (!range || range === 'all') return [ -Infinity, Infinity ];
+    const parts = range.split('-');
+    const min = parts[0] === '' ? -Infinity : parseFloat(parts[0]);
+    const max = parts[1] === '' ? Infinity : parseFloat(parts[1]);
+    return [min, max];
+  }
+
+  function applyFilters() {
+    const [min, max] = parseRange(selectedPriceRange);
+    const catName = (selectedCategory && selectedCategory !== '*') ? selectedCategory.replace(/^\./, '') : null;
+    let visibleCount = 0;
+
+    items.forEach(el => {
+      const price = parseFloat(el.dataset.price) || 0;
+      const name = (el.dataset.name || '').toLowerCase();
+      const digits = (searchTerm.match(/\d/g) || []).join('');
+      const priceDigits = String(Math.round(price)).replace(/\D/g,'');
+      const matchesPriceSearch = digits ? priceDigits.includes(digits) : false;
+      const matchesNameSearch = !searchTerm || name.includes(searchTerm.toLowerCase());
+      const matchesCategory = !catName || el.classList.contains(catName);
+      const matchesPriceRange = price >= min && price <= max;
+
+      const show = matchesCategory && matchesPriceRange && (matchesNameSearch || matchesPriceSearch);
+      el.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+
+    const counter = document.getElementById('search-count');
+    if (counter) {
+      counter.textContent = visibleCount + ' result' + (visibleCount !== 1 ? 's' : '');
+    }
+
+    if (selectedSort && selectedSort !== 'default') {
+      const visible = items.filter(i => i.style.display !== 'none');
+      visible.sort((a,b) => {
+        if (selectedSort === 'price-asc' || selectedSort === 'price-desc') {
+          const pa = parseFloat(a.dataset.price) || 0;
+          const pb = parseFloat(b.dataset.price) || 0;
+          return selectedSort === 'price-asc' ? pa - pb : pb - pa;
+        }
+        return 0;
+      });
+      visible.forEach(v => grid.appendChild(v));
+    } else {
+      originalOrder.forEach(orig => { if (orig.parentElement) grid.appendChild(orig); });
+    }
+  }
+
+  // Category filter
+  document.querySelectorAll('.filter-tope-group button[data-filter]').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectedCategory = btn.getAttribute('data-filter') || '*';
+      document.querySelectorAll('.filter-tope-group button').forEach(b => b.classList.remove('how-active1'));
+      btn.classList.add('how-active1');
+      applyFilters();
+    });
+  });
+
+  // Price filter
+  document.querySelectorAll('.filter-price').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectedPriceRange = a.dataset.priceRange || 'all';
+      document.querySelectorAll('.filter-price').forEach(x => x.classList.remove('filter-link-active'));
+      a.classList.add('filter-link-active');
+      applyFilters();
+    });
+  });
+
+  // Sort
+  document.querySelectorAll('[data-sort]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectedSort = a.dataset.sort || 'default';
+      document.querySelectorAll('[data-sort]').forEach(x => x.classList.remove('filter-link-active'));
+      a.classList.add('filter-link-active');
+      applyFilters();
+    });
+  });
+
+  // Search
+  const searchInput = document.getElementById('search-product');
+  if (searchInput) {
+    let timeout = null;
+    searchInput.addEventListener('input', function() {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        searchTerm = searchInput.value.trim();
+        applyFilters();
+      }, 300);
+    });
+    const searchBtn = document.getElementById('search-btn');
+    if (searchBtn) {
+      searchBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        searchTerm = searchInput.value.trim();
+        applyFilters();
+      });
+    }
+  }
+
+  applyFilters();
+})();
+	</script>
 </body>
 </html>

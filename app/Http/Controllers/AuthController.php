@@ -22,7 +22,6 @@ class AuthController extends Controller
 
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
-            // Jika user adalah admin, langsung ke dashboard
             $user = Auth::user();
             if ($user && isset($user->role) && $user->role === 'admin') {
                 return redirect()->route('dashboard');
@@ -42,7 +41,6 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
-        // Hash password and create user with role 'user'
         $data['password'] = bcrypt($data['password']);
         $data['role'] = 'user';
         User::create($data);

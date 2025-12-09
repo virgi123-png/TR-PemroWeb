@@ -36,6 +36,31 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/script.js') }}"></script>
 <!--===============================================================================================-->
+
+<style>
+		/* Konsistensi ukuran gambar produk */
+		.block2-pic {
+			width: 100%;
+			height: 300px;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #f9f9f9;
+		}
+
+		.block2-pic img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+
+		.hov-img0:hover img {
+			transform: scale(1.05);
+			transition: transform 0.3s ease;
+		}
+	</style>
 </head>
 <body class="animsition">
 
@@ -281,6 +306,8 @@
 	<!-- Product -->
 	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
+			<div id="search-count" class="search-count p-b-20"></div>
+
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
@@ -298,7 +325,7 @@
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
 						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						 Filter
+						Filter
 					</div>
 
 					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
@@ -307,211 +334,98 @@
 						Search
 					</div>
 				</div>
+			</div>
 
-				<!-- Search product -->
-				<div class="dis-none panel-search w-full p-t-10 p-b-15">
-					<div class="bor8 dis-flex p-l-15">
-						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
-
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-					</div>
+			<!-- Search product -->
+			<div class="dis-none panel-search w-full p-t-10 p-b-15">
+				<div class="bor8 dis-flex p-l-15">
+					<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" id="search-btn">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input id="search-product" class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Cari nama atau harga (cth: Jam Tangan, 150000)">
 				</div>
+			</div>
 
-				<!-- Filter -->
-				<div class="dis-none panel-filter w-full p-t-10">
-					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-						<div class="filter-col1 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Sort By
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Default
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Popularity
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Average rating
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Newness
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Price: Low to High
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Price: High to Low
-									</a>
-								</li>
-							</ul>
+			<!-- Filter -->
+			<div class="dis-none panel-filter w-full p-t-10">
+				<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+					<div class="filter-col1 p-r-15 p-b-27">
+						<div class="mtext-102 cl2 p-b-15">
+							Sort By
 						</div>
 
-						<div class="filter-col2 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Price
-							</div>
+						<ul>
+							<li class="p-b-6">
+								<a href="#" class="filter-link stext-106 trans-04" data-sort="default">
+									Default
+								</a>
+							</li>
 
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										All
-									</a>
-								</li>
+							<li class="p-b-6">
+								<a href="#" class="filter-link stext-106 trans-04" data-sort="price-asc">
+									Price: Low to High
+								</a>
+							</li>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$0.00 - $50.00
-									</a>
-								</li>
+							<li class="p-b-6">
+								<a href="#" class="filter-link stext-106 trans-04" data-sort="price-desc">
+									Price: High to Low
+								</a>
+							</li>
+						</ul>
+					</div>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$50.00 - $100.00
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$100.00 - $150.00
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$150.00 - $200.00
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$200.00+
-									</a>
-								</li>
-							</ul>
+					<div class="filter-col2 p-r-15 p-b-27">
+						<div class="mtext-102 cl2 p-b-15">
+							Price (Rp)
 						</div>
 
-						<div class="filter-col3 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Color
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #222;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Black
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Blue
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Grey
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Green
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Red
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
-										<i class="zmdi zmdi-circle-o"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										White
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<div class="filter-col4 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Tags
-							</div>
-
-							<div class="flex-w p-t-4 m-r--5">
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Fashion
+						<ul>
+							<li class="p-b-6">
+								<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="all">
+									All
 								</a>
+							</li>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Lifestyle
+							<li class="p-b-6">
+								<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="0-100000">
+									Rp 0 - Rp 100.000
 								</a>
+							</li>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Denim
+							<li class="p-b-6">
+								<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="100000-300000">
+									Rp 100.000 - Rp 300.000
 								</a>
+							</li>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Streetstyle
+							<li class="p-b-6">
+								<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="300000-600000">
+									Rp 300.000 - Rp 600.000
 								</a>
+							</li>
 
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Crafts
+							<li class="p-b-6">
+								<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="600000-1000000">
+									Rp 600.000 - Rp 1.000.000
 								</a>
-							</div>
-						</div>
+							</li>
+
+							<li class="p-b-6">
+								<a href="#" class="filter-link stext-106 trans-04 filter-price" data-price-range="1000000-">
+									Rp 1.000.000+
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 
 			<div class="row isotope-grid">
 				@forelse($products as $product)
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item tipe-{{ $product->tipe_jam_id }}">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item tipe-{{ $product->tipe_jam_id }}"
+					 data-price="{{ (float) $product->harga_produk }}"
+					 data-name="{{ strtolower($product->nama_produk) }}">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
@@ -525,7 +439,7 @@
 								</a>
 
 								<span class="stext-105 cl3">
-									Rp{{ number_format($product->harga_produk, 2) }}
+									Rp{{ number_format($product->harga_produk, 0, ',', '.') }}
 								</span>
 							</div>
 
@@ -544,13 +458,10 @@
 				</div>
 				@endforelse
 			</div>
-
-
 		</div>
 	</div>
 
 
-	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">
@@ -561,26 +472,20 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Wanita
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Pria
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
+							<a href="{{ url('/product') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Anak Anak
 							</a>
 						</li>
 					</ul>
@@ -593,25 +498,7 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ url('/help') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								FAQs
 							</a>
 						</li>
@@ -687,7 +574,7 @@
 
 				<p class="stext-107 cl6 txt-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 				</p>
@@ -1036,5 +923,168 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		});
 	</script>
 
+	<script>
+(function(){
+  const grid = document.querySelector('.isotope-grid');
+  if (!grid) return;
+
+  const items = Array.from(grid.querySelectorAll('.isotope-item'));
+  const originalOrder = items.slice();
+
+  let selectedCategory = '*';
+  let selectedPriceRange = 'all';
+  let selectedSort = 'default';
+  let searchTerm = '';
+
+  function parseRange(range) {
+    if (!range || range === 'all') return [ -Infinity, Infinity ];
+    const parts = range.split('-');
+    const min = parts[0] === '' ? -Infinity : parseFloat(parts[0]);
+    const max = parts[1] === '' ? Infinity : parseFloat(parts[1]);
+    return [min, max];
+  }
+
+  function applyFilters() {
+    const [min, max] = parseRange(selectedPriceRange);
+    const catName = (selectedCategory && selectedCategory !== '*') ? selectedCategory.replace(/^\./, '') : null;
+    let visibleCount = 0;
+
+    items.forEach(el => {
+      const price = parseFloat(el.dataset.price) || 0;
+      const name = (el.dataset.name || '').toLowerCase();
+      const digits = (searchTerm.match(/\d/g) || []).join('');
+      const priceDigits = String(Math.round(price)).replace(/\D/g,'');
+      const matchesPriceSearch = digits ? priceDigits.includes(digits) : false;
+      const matchesNameSearch = !searchTerm || name.includes(searchTerm.toLowerCase());
+      const matchesCategory = !catName || el.classList.contains(catName);
+      const matchesPriceRange = price >= min && price <= max;
+
+      const show = matchesCategory && matchesPriceRange && (matchesNameSearch || matchesPriceSearch);
+      el.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+
+    const counter = document.getElementById('search-count');
+    if (counter) {
+      counter.textContent = visibleCount + ' result' + (visibleCount !== 1 ? 's' : '');
+    }
+
+    if (selectedSort && selectedSort !== 'default') {
+      const visible = items.filter(i => i.style.display !== 'none');
+      visible.sort((a,b) => {
+        if (selectedSort === 'price-asc' || selectedSort === 'price-desc') {
+          const pa = parseFloat(a.dataset.price) || 0;
+          const pb = parseFloat(b.dataset.price) || 0;
+          return selectedSort === 'price-asc' ? pa - pb : pb - pa;
+        }
+        return 0;
+      });
+      visible.forEach(v => grid.appendChild(v));
+    } else {
+      originalOrder.forEach(orig => { if (orig.parentElement) grid.appendChild(orig); });
+    }
+  }
+
+  function normalizeForMatch(s) {
+    return String(s || '')
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9\-]/g, '');
+  }
+
+  function applyInitialFiltersFromQuery() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('category');
+      const price = params.get('price');
+      const q = params.get('q') || params.get('search') || params.get('query');
+      const sort = params.get('sort');
+
+      if (cat) {
+        const target = normalizeForMatch(cat);
+        const btns = Array.from(document.querySelectorAll('.filter-tope-group button'));
+        const match = btns.find(b => normalizeForMatch(b.textContent) === target);
+        if (match) match.click();
+      }
+
+      if (price) {
+        const priceEl = document.querySelector('.filter-price[data-price-range="' + price + '"]');
+        if (priceEl) priceEl.click();
+      }
+
+      if (sort) {
+        const sortEl = document.querySelector('[data-sort="' + sort + '"]');
+        if (sortEl) sortEl.click();
+      }
+
+      if (q) {
+        const sInput = document.getElementById('search-product');
+        searchTerm = String(q).trim();
+        if (sInput) sInput.value = searchTerm;
+      }
+    } catch (e) {
+      console.error('Error applying initial filters:', e);
+    }
+  }
+
+  // Category filter
+  document.querySelectorAll('.filter-tope-group button[data-filter]').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectedCategory = btn.getAttribute('data-filter') || '*';
+      document.querySelectorAll('.filter-tope-group button').forEach(b => b.classList.remove('how-active1'));
+      btn.classList.add('how-active1');
+      applyFilters();
+    });
+  });
+
+  // Price filter
+  document.querySelectorAll('.filter-price').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectedPriceRange = a.dataset.priceRange || 'all';
+      document.querySelectorAll('.filter-price').forEach(x => x.classList.remove('filter-link-active'));
+      a.classList.add('filter-link-active');
+      applyFilters();
+    });
+  });
+
+  // Sort
+  document.querySelectorAll('[data-sort]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      selectedSort = a.dataset.sort || 'default';
+      document.querySelectorAll('[data-sort]').forEach(x => x.classList.remove('filter-link-active'));
+      a.classList.add('filter-link-active');
+      applyFilters();
+    });
+  });
+
+  // Search
+  const searchInput = document.getElementById('search-product');
+  if (searchInput) {
+    let timeout = null;
+    searchInput.addEventListener('input', function() {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        searchTerm = searchInput.value.trim();
+        applyFilters();
+      }, 300);
+    });
+    const searchBtn = document.getElementById('search-btn');
+    if (searchBtn) {
+      searchBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        searchTerm = searchInput.value.trim();
+        applyFilters();
+      });
+    }
+  }
+
+  applyInitialFiltersFromQuery();
+  applyFilters();
+})();
+	</script>
 </body>
 </html>
